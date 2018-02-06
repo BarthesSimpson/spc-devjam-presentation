@@ -9,6 +9,7 @@ import {
   CodePane,
   Deck,
   Heading,
+  Image,
   ListItem,
   List,
   Quote,
@@ -22,6 +23,9 @@ import sampleCode from './testCode'
 // Import theme
 import createTheme from 'spectacle/lib/themes/default'
 import styled from 'styled-components'
+
+// import images
+import supervised1 from './img/supervised1.png'
 
 // Require CSS
 require('normalize.css')
@@ -143,12 +147,104 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
+        {/* MACHINE LEARNING IN GENERAL*/}
+        <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            How does Machine Learning work?
+          </Heading>
+          <List>
+            <ListItem>Supervised Learning</ListItem>
+            <Text textColor="tertiary" textSize={'0.9em'} padding={'0.5em 0'}>
+              Gather labeled data and use statistical techniques to form a
+              predictive model for new data
+            </Text>
+            <ListItem>Unsupervised Learning</ListItem>
+            <Text textColor="tertiary" textSize={'0.9em'} padding={'0.5em 0'}>
+              Gather unlabeled data and use statistical techniques to detect
+              structure
+            </Text>
+            <ListItem>Reinforcement Learning</ListItem>
+            <Text textColor="tertiary" textSize={'0.9em'} padding={'0.5em 0'}>
+              Set up some task, a set of options, and a reward system then
+              repeat task until an optimal strategy is developed
+            </Text>
+          </List>
+        </Slide>
+
+        {/* SUPERVISED LEARNING EXAMPLE*/}
+        <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Supervised Learning Example
+          </Heading>
+          <Image src={supervised1} alt="Annotated vehicles image" />
+        </Slide>
+        <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Supervised Learning Example
+          </Heading>
+          <Text
+            textAlign="left"
+            textColor="tertiary"
+            textSize={'0.75em'}
+            padding={'0.5em 0'}
+          >
+            1. Gather 10,000 images from dashcam, and manually add bounding
+            boxes around vehicles
+          </Text>
+          <Text
+            textAlign="left"
+            textColor="tertiary"
+            textSize={'0.75em'}
+            padding={'0.5em 0'}
+          >
+            2. For each image, save the image as a pixel array. Also save the
+            detected objects as an array of bounding boxes with numerical labels
+            (e.g. car=1, truck=2)
+          </Text>
+          <Text
+            textAlign="left"
+            textColor="tertiary"
+            textSize={'0.75em'}
+            padding={'0.5em 0'}
+          >
+            3. Feed some portion of the images (training set) through an
+            algorithm and have it make random guesses as to bounding boxes and
+            labels. Measure its performance against the true labels. Use
+            calculus and the chain rule to figure out how much each parameter of
+            your model contributed to the error, then adjust the guilty parties
+            by some small amount (the "learning rate")
+          </Text>
+          <Text
+            textAlign="left"
+            textColor="tertiary"
+            textSize={'0.75em'}
+            padding={'0.5em 0'}
+          >
+            4. Keep running the images forward and backward through the
+            algorithm until the model performs well. Test it on another portion
+            of your images (validation set). It if performs poorly, you have
+            overfit to the training set, so apply regularization techniques.
+          </Text>
+          <Text
+            textAlign="left"
+            textColor="tertiary"
+            textSize={'0.75em'}
+            padding={'0.5em 0'}
+          >
+            5. When the validation set performance is sufficient, test on a
+            final chunk of your data (test set). If the model performs well, you
+            are good to go; if not, you need to shuffle your data and start
+            over.
+          </Text>
+        </Slide>
+
         {/* EARLY CARS */}
         <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
             The State of the Art in 2005
           </Heading>
           <iframe
+            title="early cars"
             width="560"
             height="315"
             src="https://www.youtube.com/embed/0Imsj9u0CcA?rel=0"
